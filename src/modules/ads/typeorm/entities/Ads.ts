@@ -39,7 +39,7 @@ class Ads {
   validity_check: Date;
 
   @Column()
-  id_partner: string;
+  id_people: string;
 
   @Column()
   active: boolean;

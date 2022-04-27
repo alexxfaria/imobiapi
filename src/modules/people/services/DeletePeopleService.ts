@@ -9,19 +9,19 @@ interface IRequest {
 
 class DeletePeopleService {
   public async execute({ id }: IRequest): Promise<void> {
-    const partnerssRepository = getCustomRepository(PeopleRepositories );
+    const peopleRepository = getCustomRepository(PeopleRepositories);
     const adsRepository = getCustomRepository(AdsRepository);
-    const partners = await partnerssRepository.findOne(id);
-    if (!partners) {
+    const people = await peopleRepository.findOne(id);
+    if (!people) {
       throw new AppError('Parceiro não encontrado.');
     }
 
-    const adsExists = await adsRepository.findById(partners.id);
-    if (adsExists?.id_partner) {
+    const adsExists = await adsRepository.findById(people.id);
+    if (adsExists?.id_people) {
       throw new AppError('Existe anuncio');
     }
 
-    await partnerssRepository.remove(partners);
+    await peopleRepository.remove(people);
   }
 }
 export default DeletePeopleService;
