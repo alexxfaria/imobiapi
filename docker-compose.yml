@@ -3,10 +3,10 @@ version: '3.8'
 services:
   postgres-service:
     image: postgres:latest
-    container_name: imobiliaria-pg
+    container_name: imobiapi
     restart: unless-stopped
     ports:
-      - ${TYPEORM_PORT}:5435/tcp
+      - ${TYPEORM_PORT}:5432/tcp
     environment:
       POSTGRES_USER: ${TYPEORM_USERNAME}
       POSTGRES_PASSWORD: ${TYPEORM_PASSWORD}
