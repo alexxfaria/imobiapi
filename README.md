@@ -13,3 +13,9 @@ Eu sou o Alex Faria
 4.  Crie um banco de dados com o nome imobiapi; <!-- PostgreSQL database -->
 5.  Rode as migrations; <!-- yarn typeorm migration:run -->
 6.  Rode o projeto; <!-- yarn dev -->
+
+## Estrutura do projeto
+
+- Primeiro é criado um cadastro de pessoa pela rota 'http://localhost:3333/people'
+- Segundo é feito o login pela rota 'http://localhost:3333/sessions'
+- Terceiro é feito a criação do Anuncio pela rota 'http://localhost:3333/ads', obrigatorio amarrar uma id do people no campo ip_people.
