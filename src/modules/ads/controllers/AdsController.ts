@@ -17,7 +17,7 @@ class AdsController {
       max_amount,
       limit_date,
       validity_check,
-      id_partner,
+      id_people,
     } = req.body;
 
     const createAds = new CreateAdsService();
@@ -32,7 +32,7 @@ class AdsController {
       max_amount,
       limit_date,
       validity_check,
-      id_partner,
+      id_people,
     });
     return res.json(ads);
   }
@@ -47,7 +47,7 @@ class AdsController {
       max_amount,
       limit_date,
       validity_check,
-      id_partner,
+      id_people,
       active,
     } = req.body;
     const { id } = req.params;
@@ -65,7 +65,7 @@ class AdsController {
       max_amount,
       limit_date,
       validity_check,
-      id_partner,
+      id_people,
       active,
     });
     return res.json(ads);

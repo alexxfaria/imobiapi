@@ -14,7 +14,7 @@ interface IRequest {
   max_amount: number;
   limit_date: Date;
   validity_check: Date;
-  id_partner: string;
+  id_people: string;
 }
 
 class CreateAdsService {
@@ -28,10 +28,10 @@ class CreateAdsService {
     max_amount,
     limit_date,
     validity_check,
-    id_partner,
+    id_people,
   }: IRequest): Promise<Ads> {
     const adsRepository = getCustomRepository(AdsRepository);
-    const partnersRepository = getCustomRepository(PeopleRepositories);
+    const peoplesRepository = getCustomRepository(PeopleRepositories);
     const ads = adsRepository.create({
       description,
       color,
@@ -42,13 +42,13 @@ class CreateAdsService {
       max_amount,
       limit_date,
       validity_check,
-      id_partner,
+      id_people,
     });
-    const partners = await partnersRepository.findById(id_partner);
-    if (!partners?.id) {
+    const people = await peoplesRepository.findById(id_people);
+    if (!people?.id) {
       throw new AppError('Parceiro não encontrado.');
     }
-    if (!partners?.active) {
+    if (!people?.active) {
       throw new AppError('Parceiro esta inativo.');
     }
     await adsRepository.save(ads);
