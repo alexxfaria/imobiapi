@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
-import { getCustomRepository } from 'typeorm';
+import { getCustomRepository, IsNull } from 'typeorm';
 import People from '../typeorm/entities/People';
 import PeopleRepositories from '../typeorm/repositories/PeopleRepositories';
 
@@ -79,7 +79,6 @@ class CreatePeopleService {
       id_property,
       active,
     });
-
     if (!people.name) {
       throw new AppError('Nome é obrigatório.');
     }

@@ -7,21 +7,21 @@ import UpdatePeopleService from '../services/UpdatePeopleService';
 
 class PeopleController {
   public async index(req: Request, res: Response): Promise<Response> {
-    const listPartners = new ListPeopleService();
+    const listPeople = new ListPeopleService();
 
-    const partners = await listPartners.execute();
+    const people = await listPeople.execute();
 
-    return res.json(partners);
+    return res.json(people);
   }
 
   public async show(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
-    const showPartners = new ShowPeopleService();
+    const showPeople = new ShowPeopleService();
 
-    const partners = await showPartners.execute({ id });
+    const people = await showPeople.execute({ id });
 
-    return res.json(partners);
+    return res.json(people);
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
@@ -94,9 +94,9 @@ class PeopleController {
     } = req.body;
     const { id } = req.params;
 
-    const updatePartners = new UpdatePeopleService();
+    const updatePeople = new UpdatePeopleService();
 
-    const partners = await updatePartners.execute({
+    const peoples = await updatePeople.execute({
       id,
       name,
       email,
@@ -117,15 +117,15 @@ class PeopleController {
       active,
     });
 
-    return res.json(partners);
+    return res.json(peoples);
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
-    const deletePartners = new DeletePeopleService();
+    const deletePeople = new DeletePeopleService();
 
-    await deletePartners.execute({ id });
+    await deletePeople.execute({ id });
 
     return res.json([]);
   }

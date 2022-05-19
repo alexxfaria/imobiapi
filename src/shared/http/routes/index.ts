@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import peopleRouter from '../../../modules/people/routes/parters.routes';
+import peopleRouter from '../../../modules/people/routes/people.routes';
 import sessionsRouter from '@modules/people/routes/sessions.routes';
 import passwordRouter from '@modules/people/routes/password.routes';
 import profileRouter from '@modules/people/routes/profile.routes';
