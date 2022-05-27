@@ -13,13 +13,7 @@ interface IRequest {
 }
 
 class UpdateProfileService {
-  public async execute({
-    user_id,
-    name,
-    email,
-    password,
-    old_password,
-  }: IRequest): Promise<People> {
+  public async execute({ user_id, name, email, password, old_password }: IRequest): Promise<People> {
     const partnersRepository = getCustomRepository(PeopleRepositories);
 
     const partners = await partnersRepository.findOne(user_id);

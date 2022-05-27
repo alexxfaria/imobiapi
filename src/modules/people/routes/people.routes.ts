@@ -6,7 +6,6 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import isAuthenticated from '../../../shared/http/middlewares/isAuthenticated';
 import PeopleAvatarController from '../controllers/PeopleAvatarController';
 import { ensureAdmin } from '../../../shared/http/middlewares/ensureAdmin';
-import { string } from 'joi';
 
 const peopleRouter = Router();
 const peopleController = new PeopleController();
@@ -91,11 +90,6 @@ peopleRouter.delete(
   }),
   peopleController.delete,
 );
-peopleRouter.patch(
-  '/avatar',
-  isAuthenticated,
-  upload.single('avatar'),
-  peopleAvatarController.update,
-);
+peopleRouter.patch('/avatar', isAuthenticated, upload.single('avatar'), peopleAvatarController.update);
 
 export default peopleRouter;

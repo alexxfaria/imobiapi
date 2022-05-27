@@ -7,18 +7,7 @@ import UpdateAdsService from '../services/UpdateAdsService';
 
 class AdsController {
   public async create(req: Request, res: Response): Promise<Response> {
-    const {
-      description,
-      color,
-      measure,
-      max_price,
-      ideal_amount,
-      min_amount,
-      max_amount,
-      limit_date,
-      validity_check,
-      id_people,
-    } = req.body;
+    const { description, color, measure, max_price, ideal_amount, min_amount, max_amount, limit_date, validity_check, id_people } = req.body;
 
     const createAds = new CreateAdsService();
 
@@ -37,19 +26,7 @@ class AdsController {
     return res.json(ads);
   }
   public async update(req: Request, res: Response): Promise<Response> {
-    const {
-      description,
-      color,
-      measure,
-      max_price,
-      ideal_amount,
-      min_amount,
-      max_amount,
-      limit_date,
-      validity_check,
-      id_people,
-      active,
-    } = req.body;
+    const { description, color, measure, max_price, ideal_amount, min_amount, max_amount, limit_date, validity_check, id_people, active } = req.body;
     const { id } = req.params;
 
     const updateAds = new UpdateAdsService();
