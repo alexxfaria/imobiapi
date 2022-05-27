@@ -28,10 +28,10 @@ peopleRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      name: Joi.string(),
-      email: Joi.string().email(),
+      name: Joi.string().allow(''),
+      email: Joi.string().email().allow(''),
       password: Joi.string().required(),
-      phone: Joi.string(),
+      phone: Joi.string().allow(''),
       admin: Joi.boolean(),
       cnpj_cpf: Joi.string(),
       address: Joi.string(),
@@ -57,12 +57,12 @@ peopleRouter.put(
   isAuthenticated,
   celebrate({
     [Segments.BODY]: {
-      name: Joi.string(),
-      email: Joi.string().email(),
-      phone: Joi.string(),
+      name: Joi.string().allow(''),
+      email: Joi.string().email().allow(''),
+      phone: Joi.string().allow(''),
       admin: Joi.boolean(),
-      cnpj: Joi.string(),
-      cpf: Joi.string(),
+      cnpj: Joi.string().allow(''),
+      cpf: Joi.string().allow(''),
       address: Joi.string(),
       number: Joi.string(),
       complements: Joi.string(),

@@ -49,13 +49,13 @@ class UpdatePeopleService {
 
     const people = await peopleRepository.findById(id);
     if (!people) {
-      throw new AppError('Parceiro não existe.');
+      throw new AppError('Parceiro não encontrado.');
     }
-    const peopleExists = await peopleRepository.findByName(email);
+    const emailExists = await peopleRepository.findByName(email);
     const phoneExists = await peopleRepository.findByPhone(phone);
 
-    if (peopleExists && email != people.email) {
-      throw new AppError('Email já esta sendo utilizado.');
+    if (emailExists && email != people.email) {
+      throw new AppError('E-mail já esta sendo utilizado.');
     }
     if (phoneExists && phone != people.phone) {
       throw new AppError('Telefone já esta sendo utilizado.');
