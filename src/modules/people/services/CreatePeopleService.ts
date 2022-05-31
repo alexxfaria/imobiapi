@@ -82,11 +82,11 @@ class CreatePeopleService {
     }
     // Verifica se ja existe o email cadastrado
     if (emailExists) {
-      throw new AppError('Já existe esse e-mail cadastrado.');
+      throw new AppError('E-mail já esta sendo utilizado.');
     }
     // Verifica se ja existe telefone cadastrado
     if (phoneExists) {
-      throw new AppError('Já existe esse telefone cadastrado.');
+      throw new AppError('Telefone já esta sendo utilizado.');
     }
     // Obrigado digitação do email
     if (!people.email || people.email.length < 6) {
