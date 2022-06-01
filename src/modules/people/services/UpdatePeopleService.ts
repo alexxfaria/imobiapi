@@ -8,7 +8,6 @@ interface IRequest {
   name: string;
   email: string;
   phone: string;
-  admin: boolean;
   cnpj_cpf: string;
   address: string;
   number: string;
@@ -20,7 +19,7 @@ interface IRequest {
   zip: string;
   contact: string;
   landline: string;
-  id_property: string;
+  id_ads: string;
   active: boolean;
 }
 
@@ -30,7 +29,6 @@ class UpdatePeopleService {
     name,
     email,
     phone,
-    admin,
     cnpj_cpf,
     address,
     number,
@@ -42,7 +40,7 @@ class UpdatePeopleService {
     zip,
     contact,
     landline,
-    id_property,
+    id_ads,
     active,
   }: IRequest): Promise<People> {
     const peopleRepository = getCustomRepository(PeopleRepositories);
@@ -96,7 +94,6 @@ class UpdatePeopleService {
     people.name = name;
     people.email = email;
     people.phone = phone;
-    people.admin = admin;
     people.cnpj_cpf = cnpj_cpf;
     people.address = address;
     people.number = number;
@@ -108,7 +105,7 @@ class UpdatePeopleService {
     people.zip = zip;
     people.contact = contact;
     people.landline = landline;
-    people.id_property = id_property;
+    people.id_ads = id_ads;
     people.active = active;
 
     await peopleRepository.save(people);

@@ -1,15 +1,13 @@
 import AppError from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
-import { getCustomRepository, IsNull } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import People from '../typeorm/entities/People';
 import PeopleRepositories from '../typeorm/repositories/PeopleRepositories';
 
 interface IRequest {
   name: string;
   email: string;
-  password: string;
   phone: string;
-  admin: boolean;
   cnpj_cpf: string;
   address: string;
   number: string;
@@ -21,7 +19,7 @@ interface IRequest {
   zip: string;
   contact: string;
   landline: string;
-  id_property: string;
+  id_ads: string;
   active: boolean;
 }
 
@@ -29,9 +27,7 @@ class CreatePeopleService {
   public async execute({
     name,
     email,
-    password,
     phone,
-    admin,
     cnpj_cpf,
     address,
     number,
@@ -43,21 +39,17 @@ class CreatePeopleService {
     zip,
     contact,
     landline,
-    id_property,
+    id_ads,
     active,
   }: IRequest): Promise<People> {
     const peopleRepository = getCustomRepository(PeopleRepositories);
     const emailExists = await peopleRepository.findByEmail(email);
     const phoneExists = await peopleRepository.findByPhone(phone);
 
-    const hashedPassword = await hash(password, 8);
-
     const people = peopleRepository.create({
       name,
       email,
-      password: hashedPassword,
       phone,
-      admin,
       cnpj_cpf,
       address,
       number,
@@ -69,7 +61,7 @@ class CreatePeopleService {
       zip,
       contact,
       landline,
-      id_property,
+      id_ads,
       active,
     });
     // ##### VALIDAÇÕES / REGRAS #####

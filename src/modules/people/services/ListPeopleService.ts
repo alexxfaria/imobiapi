@@ -4,9 +4,9 @@ import PeopleRepositories from '../typeorm/repositories/PeopleRepositories';
 
 class ListPeopleService {
   public async execute(): Promise<People[]> {
-    const partnersRepositories = getCustomRepository(PeopleRepositories);
-    const partners = await partnersRepositories.find();
-    return partners;
+    const peopleRepositories = getCustomRepository(PeopleRepositories);
+    const people = await peopleRepositories.find();
+    return people;
   }
 }
 export default ListPeopleService;

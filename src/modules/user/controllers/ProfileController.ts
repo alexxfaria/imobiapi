@@ -6,7 +6,7 @@ class ProfileController {
   public async show(req: Request, res: Response): Promise<Response> {
     const showProfile = new ShowProfileService();
 
-    const user_id = req.user.id;
+    const user_id = req.users.id;
 
     const user = await showProfile.execute({ user_id });
 
@@ -15,7 +15,7 @@ class ProfileController {
 
   public async update(req: Request, res: Response): Promise<Response> {
     const { name, email, password, old_password } = req.body;
-    const user_id = req.user.id;
+    const user_id = req.users.id;
 
     const updateProfile = new UpdateProfileService();
 

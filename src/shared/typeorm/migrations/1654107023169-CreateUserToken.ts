@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreatePeopleTokens1642102541306 implements MigrationInterface {
+export class CreateUserToken1654107023169 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
       new Table({
-        name: 'people_tokens',
+        name: 'user_token',
         columns: [
           {
             name: 'id',
@@ -37,8 +37,8 @@ export class CreatePeopleTokens1642102541306 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: 'tokenpeople',
-            referencedTableName: 'people',
+            name: 'tokenuser',
+            referencedTableName: 'users',
             referencedColumnNames: ['id'],
             columnNames: ['user_id'],
             onDelete: 'CASCADE',
@@ -50,6 +50,6 @@ export class CreatePeopleTokens1642102541306 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('people_tokens');
+    await queryRunner.dropTable('user_token');
   }
 }

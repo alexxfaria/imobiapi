@@ -23,7 +23,7 @@ export default function isAuthenticated(req: Request, res: Response, next: NextF
 
     const { sub } = decodedToken as ITokenPayload;
 
-    req.partners = {
+    req.users = {
       id: sub,
     };
 

@@ -1,16 +1,16 @@
 import { Request, Response } from 'express';
-import UpdatePeopleAvatarService from '../services/UpdatePeopleAvatarService';
+import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 
 class PeopleAvatarController {
   public async update(req: Request, res: Response): Promise<Response> {
-    const updateAvatar = new UpdatePeopleAvatarService();
+    const updateAvatar = new UpdateUserAvatarService();
 
-    const partners = await updateAvatar.execute({
-      user_id: req.partners.id,
+    const users = await updateAvatar.execute({
+      user_id: req.users.id,
       avatarFilename: req.file?.filename as string,
     });
 
-    return res.json(partners);
+    return res.json(users);
   }
 }
 export default PeopleAvatarController;

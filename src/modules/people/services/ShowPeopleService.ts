@@ -9,12 +9,12 @@ interface IRequest {
 
 class ShowPeopleService {
   public async execute({ id }: IRequest): Promise<People> {
-    const partnersRepository = getCustomRepository(PeopleRepositories);
-    const partners = await partnersRepository.findById(id);
-    if (!partners) {
-      throw new AppError('Parceiro não encontrado.');
+    const peopleRepository = getCustomRepository(PeopleRepositories);
+    const people = await peopleRepository.findById(id);
+    if (!people) {
+      throw new AppError('Pessoa não encontrado.');
     }
-    return partners;
+    return people;
   }
 }
 export default ShowPeopleService;

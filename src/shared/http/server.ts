@@ -11,7 +11,6 @@ import uploadConfig from '@config/upload';
 const app = express();
 const port = process.env.API_PORT;
 const ip = process.env.TYPEORM_HOST;
-const ipExterno = process.env.IP_EXTERNO;
 
 app.use(cors());
 app.use(express.json());
@@ -37,5 +36,5 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor em execução no ip: ${ip}:${port} ou ${ipExterno}:${port}`);
+  console.log(`Servidor em execução no ip: ${ip}:${port}`);
 });

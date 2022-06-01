@@ -13,12 +13,12 @@ class DeletePeopleService {
     const adsRepository = getCustomRepository(AdsRepository);
     const people = await peopleRepository.findOne(id);
     if (!people) {
-      throw new AppError('Parceiro não encontrado.');
+      throw new AppError('Pessoa não encontrado.');
     }
 
     const adsExists = await adsRepository.findById(people.id);
     if (adsExists?.id_people) {
-      throw new AppError('Existe anuncio');
+      throw new AppError('Existe anúncio desta pessoa');
     }
 
     await peopleRepository.remove(people);

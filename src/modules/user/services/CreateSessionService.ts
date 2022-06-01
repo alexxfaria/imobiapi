@@ -3,8 +3,8 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import { getCustomRepository } from 'typeorm';
-import People from '../typeorm/entities/People';
-import PeopleRepositories from '../typeorm/repositories/PeopleRepositories';
+import User from '../typeorm/entities/User';
+import UserRepository from '../typeorm/repositories/UserRepository';
 
 interface IRequest {
   email: string;
@@ -12,28 +12,28 @@ interface IRequest {
 }
 
 interface IResponse {
-  partners: People;
+  user: User;
   token: string;
 }
 class CreateSessionService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
-    const partnersRepository = getCustomRepository(PeopleRepositories);
-    const partners = await partnersRepository.findByEmail(email);
+    const usersRepository = getCustomRepository(UserRepository);
+    const user = await usersRepository.findByEmail(email);
 
-    if (!partners) {
+    if (!user) {
       throw new AppError('Email / Senha incorreto', 401);
     }
-    const passwordConfirmed = await compare(password, partners.password);
+    const passwordConfirmed = await compare(password, user.password);
 
     if (!passwordConfirmed) {
       throw new AppError('Email / Senha incorreto', 401);
     }
     const token = sign({}, authConfig.jwt.secret, {
-      subject: partners.id,
+      subject: user.id,
       expiresIn: authConfig.jwt.expiresIn,
     });
 
-    return { partners, token };
+    return { user, token };
   }
 }
 export default CreateSessionService;

@@ -24,23 +24,9 @@ export class CreatePeople1642003091281 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: 'password',
-            type: 'varchar',
-          },
-          {
             name: 'phone',
             type: 'varchar',
             isUnique: true,
-          },
-          {
-            name: 'admin',
-            type: 'boolean',
-            default: false,
-          },
-          {
-            name: 'avatar',
-            type: 'varchar',
-            isNullable: true,
           },
           {
             name: 'cnpj_cpf',
@@ -98,7 +84,7 @@ export class CreatePeople1642003091281 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'id_property',
+            name: 'id_ads',
             type: 'uuid',
             isNullable: true,
           },

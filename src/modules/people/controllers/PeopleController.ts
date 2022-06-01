@@ -25,35 +25,15 @@ class PeopleController {
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
-    const {
-      name,
-      email,
-      password,
-      phone,
-      admin,
-      cnpj_cpf,
-      address,
-      number,
-      complements,
-      district,
-      city,
-      state,
-      country,
-      zip,
-      contact,
-      landline,
-      id_property,
-      active,
-    } = req.body;
+    const { name, email, phone, cnpj_cpf, address, number, complements, district, city, state, country, zip, contact, landline, id_ads, active } =
+      req.body;
 
     const createPeople = new CreatePeopleService();
 
     const people = await createPeople.execute({
       name,
       email,
-      password,
       phone,
-      admin,
       cnpj_cpf,
       address,
       number,
@@ -65,7 +45,7 @@ class PeopleController {
       zip,
       contact,
       landline,
-      id_property,
+      id_ads,
       active,
     });
 
@@ -73,25 +53,8 @@ class PeopleController {
   }
 
   public async update(req: Request, res: Response): Promise<Response> {
-    const {
-      name,
-      email,
-      phone,
-      admin,
-      cnpj_cpf,
-      address,
-      number,
-      complements,
-      district,
-      city,
-      state,
-      country,
-      zip,
-      contact,
-      landline,
-      id_property,
-      active,
-    } = req.body;
+    const { name, email, phone, cnpj_cpf, address, number, complements, district, city, state, country, zip, contact, landline, id_ads, active } =
+      req.body;
     const { id } = req.params;
 
     const updatePeople = new UpdatePeopleService();
@@ -101,7 +64,6 @@ class PeopleController {
       name,
       email,
       phone,
-      admin,
       cnpj_cpf,
       address,
       number,
@@ -113,7 +75,7 @@ class PeopleController {
       zip,
       contact,
       landline,
-      id_property,
+      id_ads,
       active,
     });
 

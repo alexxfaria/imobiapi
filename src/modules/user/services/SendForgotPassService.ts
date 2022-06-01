@@ -2,8 +2,8 @@ import EtherealMail from '@config/mail/EtherealMail';
 import AppError from '@shared/errors/AppError';
 import path from 'path';
 import { getCustomRepository } from 'typeorm';
-import PeopleRepositories from '../typeorm/repositories/PeopleRepositories';
-import PeopleTokenRepository from '../typeorm/repositories/PeopleTokenRepository';
+import UserRepository from '../typeorm/repositories/UserRepository';
+import UserTokenRepository from '../typeorm/repositories/UserTokenRepository';
 
 interface IRequest {
   email: string;
@@ -11,16 +11,16 @@ interface IRequest {
 
 class SendForgotPassService {
   public async execute({ email }: IRequest): Promise<void> {
-    const partnersRepositories = getCustomRepository(PeopleRepositories);
-    const partnersTokenRepository = getCustomRepository(PeopleTokenRepository);
+    const userRepository = getCustomRepository(UserRepository);
+    const userTokenRepository = getCustomRepository(UserTokenRepository);
 
-    const emailExists = await partnersRepositories.findByEmail(email);
+    const emailExists = await userRepository.findByEmail(email);
 
     if (!emailExists) {
-      throw new AppError('Parceiro não encontrado.');
+      throw new AppError('Usuario não encontrado.');
     }
 
-    const { token } = await partnersTokenRepository.generate(emailExists.id);
+    const { token } = await userTokenRepository.generate(emailExists.id);
 
     const forgotPasswordTemplate = path.resolve(__dirname, '..', 'views', 'forgot_password.hbs');
 

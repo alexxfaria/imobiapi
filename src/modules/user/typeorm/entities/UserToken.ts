@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, Generated, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity('partners_tokens')
-class PeopleToken {
+@Entity('user_token')
+class UserToken {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -18,4 +18,4 @@ class PeopleToken {
   @UpdateDateColumn()
   updated_at: Date;
 }
-export default PeopleToken;
+export default UserToken;

@@ -12,16 +12,7 @@ class People {
   email: string;
 
   @Column()
-  password: string;
-
-  @Column()
   phone: string;
-
-  @Column()
-  admin: boolean;
-
-  @Column()
-  avatar: string;
 
   @Column()
   cnpj_cpf: string;
@@ -57,7 +48,7 @@ class People {
   landline: string;
 
   @Column()
-  id_property: string;
+  id_ads: string;
 
   @Column()
   active: boolean;

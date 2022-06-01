@@ -8,7 +8,7 @@ Eu sou o Alex Faria
 ## Setup inicial.
 
 1.  Clone o repositório; <!-- git clone -->
-2.  Instale as dependências; <!-- yarn install -->
+2.  Instale as dependências; <!-- yarn -->
 3.  Duplique o arquivo .env.example e renomee .env; <!--  Configurações do banco de dados, migrations -->
 4.  Crie um banco de dados com o nome imobiapi; <!-- PostgreSQL database -->
 5.  Rode as migrations; <!-- yarn typeorm migration:run -->
