@@ -17,6 +17,7 @@ export class CreateInterest1648344215102 implements MigrationInterface {
           {
             name: 'name',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'active',

@@ -2,26 +2,7 @@ import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import People from '../typeorm/entities/People';
 import PeopleRepositories from '../typeorm/repositories/PeopleRepositories';
-
-interface IRequest {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  cnpj_cpf: string;
-  address: string;
-  number: string;
-  complements: string;
-  district: string;
-  city: string;
-  state: string;
-  country: string;
-  zip: string;
-  contact: string;
-  landline: string;
-  id_ads: string;
-  active: boolean;
-}
+import IPeopleUpdate from '../interfaces/peopleUpdate.interface';
 
 class UpdatePeopleService {
   public async execute({
@@ -40,9 +21,8 @@ class UpdatePeopleService {
     zip,
     contact,
     landline,
-    id_ads,
     active,
-  }: IRequest): Promise<People> {
+  }: IPeopleUpdate): Promise<People> {
     const peopleRepository = getCustomRepository(PeopleRepositories);
     const people = await peopleRepository.findById(id);
     const emailExists = await peopleRepository.findByName(email);
@@ -105,7 +85,6 @@ class UpdatePeopleService {
     people.zip = zip;
     people.contact = contact;
     people.landline = landline;
-    people.id_ads = id_ads;
     people.active = active;
 
     await peopleRepository.save(people);

@@ -17,6 +17,7 @@ export class CreatePeople1642003091281 implements MigrationInterface {
           {
             name: 'name',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'email',
@@ -81,11 +82,6 @@ export class CreatePeople1642003091281 implements MigrationInterface {
           {
             name: 'landline',
             type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'id_ads',
-            type: 'uuid',
             isNullable: true,
           },
           {

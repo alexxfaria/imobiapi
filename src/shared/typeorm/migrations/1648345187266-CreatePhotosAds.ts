@@ -17,10 +17,12 @@ export class CreatePhotosAds1648345187266 implements MigrationInterface {
           {
             name: 'photo',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'id_ads',
             type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'active',

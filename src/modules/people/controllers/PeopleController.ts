@@ -45,7 +45,6 @@ class PeopleController {
       zip,
       contact,
       landline,
-      id_ads,
       active,
     });
 
@@ -75,7 +74,6 @@ class PeopleController {
       zip,
       contact,
       landline,
-      id_ads,
       active,
     });
 

@@ -48,9 +48,6 @@ class People {
   landline: string;
 
   @Column()
-  id_ads: string;
-
-  @Column()
   active: boolean;
 
   @CreateDateColumn()

@@ -28,5 +28,13 @@ class AdsRepository extends Repository<Ads> {
     });
     return ads;
   }
+  public async findByPeople(id_people: string): Promise<Ads | undefined> {
+    const ads = this.findOne({
+      where: {
+        id_people,
+      },
+    });
+    return ads;
+  }
 }
 export default AdsRepository;

@@ -12,8 +12,8 @@ photoAdsRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      photo: Joi.string(),
-      id_ads: Joi.string(),
+      photo: Joi.string().allow(''),
+      id_ads: Joi.string().uuid().allow(''),
     },
   }),
   photoAdsController.create,
@@ -22,9 +22,9 @@ photoAdsRouter.put(
   '/:id',
   celebrate({
     [Segments.BODY]: {
-      photo: Joi.string(),
-      id_ads: Joi.string(),
-      active: Joi.boolean(),
+      photo: Joi.string().allow(''),
+      id_ads: Joi.string().uuid().allow(''),
+      active: Joi.boolean().allow(''),
     },
     [Segments.PARAMS]: { id: Joi.string().uuid().required() },
   }),
