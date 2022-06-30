@@ -16,7 +16,7 @@ export class CreatePhotosAds1648345187266 implements MigrationInterface {
           },
           {
             name: 'photo',
-            type: 'varchar',
+            type: 'varchar(100000)',
             isNullable: true,
           },
           {
