@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import Ads from './Ads';
 
 @Entity('photos_ads')
 class PhotoAds {
@@ -7,6 +8,10 @@ class PhotoAds {
 
   @Column()
   photo: string;
+
+  @ManyToMany(() => Ads, ads => ads.photo_ads)
+  @JoinColumn({ name: 'id' })
+  ads: Ads;
 
   @Column()
   id_ads: string;

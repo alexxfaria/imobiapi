@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class CreatePhotosAds1648345187266 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -22,7 +22,6 @@ export class CreatePhotosAds1648345187266 implements MigrationInterface {
           {
             name: 'id_ads',
             type: 'uuid',
-            isNullable: true,
           },
           {
             name: 'active',
@@ -42,9 +41,20 @@ export class CreatePhotosAds1648345187266 implements MigrationInterface {
         ],
       }),
     );
+    await queryRunner.createForeignKey(
+      'photos_ads',
+      new TableForeignKey({
+        name: 'AdsPhotos',
+        columnNames: ['id_ads'],
+        referencedTableName: 'photos_ads',
+        referencedColumnNames: ['id'],
+        onDelete: 'SET NULL',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('ads', 'AdsPeople');
     await queryRunner.dropTable('photos_ads');
   }
 }

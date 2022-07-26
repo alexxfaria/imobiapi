@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import People from '@modules/people/typeorm/entities/People';
+import PhotoAds from './PhotoAds';
 
 @Entity('ads')
 class Ads {
@@ -65,8 +67,14 @@ class Ads {
   @Column()
   zip: string;
 
-  @Column()
-  id_people: string;
+  @ManyToOne(() => People)
+  @JoinColumn({ name: 'id_people' })
+  people: People;
+
+  @OneToMany(() => PhotoAds, photo_ads => photo_ads.ads, {
+    cascade: true,
+  })
+  photo_ads: PhotoAds[];
 
   @Column()
   service_area: boolean;
