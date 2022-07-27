@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export class CreatePhotosAds1648345187266 implements MigrationInterface {
+export class CreatePhotoAds1658885207027 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
@@ -46,7 +46,7 @@ export class CreatePhotosAds1648345187266 implements MigrationInterface {
       new TableForeignKey({
         name: 'AdsPhotos',
         columnNames: ['id_ads'],
-        referencedTableName: 'photos_ads',
+        referencedTableName: 'ads',
         referencedColumnNames: ['id'],
         onDelete: 'SET NULL',
       }),
@@ -54,7 +54,7 @@ export class CreatePhotosAds1648345187266 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('ads', 'AdsPeople');
+    await queryRunner.dropForeignKey('ads', 'AdsPhotos');
     await queryRunner.dropTable('photos_ads');
   }
 }

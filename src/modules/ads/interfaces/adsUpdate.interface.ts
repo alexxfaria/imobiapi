@@ -1,3 +1,5 @@
+import IPhoto from './photo.interface';
+
 export default interface IAdsUpdate {
   description: string;
   type: string;
@@ -41,4 +43,5 @@ export default interface IAdsUpdate {
   exclusive: boolean;
   active: boolean;
   id: string;
+  photo_ads: IPhoto[];
 }

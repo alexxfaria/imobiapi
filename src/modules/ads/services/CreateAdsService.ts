@@ -47,6 +47,7 @@ class CreateAdsService {
     party_room,
     exclusive,
     active,
+    photo_ads,
   }: IAds): Promise<Ads> {
     const adsRepository = getCustomRepository(AdsRepository);
     const peoplesRepository = getCustomRepository(PeopleRepositories);
@@ -92,6 +93,7 @@ class CreateAdsService {
       party_room,
       exclusive,
       active,
+      photo_ads,
     });
     const people = await peoplesRepository.findById(id_people);
     if (!people?.id) {
@@ -100,6 +102,7 @@ class CreateAdsService {
     if (!people?.active) {
       throw new AppError('Pessoa esta inativo.');
     }
+
     await adsRepository.save(ads);
     return ads;
   }

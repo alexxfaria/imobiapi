@@ -49,6 +49,7 @@ class AdsController {
       party_room,
       exclusive,
       active,
+      photo_ads,
     } = req.body;
 
     const createAds = new CreateAdsService();
@@ -95,6 +96,7 @@ class AdsController {
       party_room,
       exclusive,
       active,
+      photo_ads,
     });
     return res.json(ads);
   }
@@ -141,6 +143,7 @@ class AdsController {
       party_room,
       exclusive,
       active,
+      photo_ads,
     } = req.body;
     const { id } = req.params;
 
@@ -189,6 +192,7 @@ class AdsController {
       party_room,
       exclusive,
       active,
+      photo_ads,
     });
     return res.json(ads);
   }

@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import People from '@modules/people/typeorm/entities/People';
+import People from '../../../people/typeorm/entities/People';
 import PhotoAds from './PhotoAds';
 
 @Entity('ads')
@@ -70,6 +70,9 @@ class Ads {
   @ManyToOne(() => People)
   @JoinColumn({ name: 'id_people' })
   people: People;
+
+  @Column()
+  id_people: string;
 
   @OneToMany(() => PhotoAds, photo_ads => photo_ads.ads, {
     cascade: true,

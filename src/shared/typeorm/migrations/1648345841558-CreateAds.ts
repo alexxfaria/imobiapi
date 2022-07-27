@@ -240,7 +240,7 @@ export class CreateAds1648345841558 implements MigrationInterface {
       new TableForeignKey({
         name: 'AdsPeople',
         columnNames: ['id_people'],
-        referencedTableName: 'ads',
+        referencedTableName: 'people',
         referencedColumnNames: ['id'],
         onDelete: 'SET NULL',
       }),

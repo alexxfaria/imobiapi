@@ -1,6 +1,9 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, Repository, In } from 'typeorm';
 import PhotoAds from '../entities/PhotoAds';
 
+interface IPhoto {
+  id: string;
+}
 @EntityRepository(PhotoAds)
 class PhotoAdsRepository extends Repository<PhotoAds> {
   public async findById(id: string): Promise<PhotoAds | undefined> {
@@ -11,13 +14,14 @@ class PhotoAdsRepository extends Repository<PhotoAds> {
     });
     return photoAds;
   }
-  public async findByDesc(photo: string): Promise<PhotoAds | undefined> {
-    const photoAds = this.findOne({
+  public async findAllByIds(photo_ads: IPhoto[]): Promise<PhotoAds[]> {
+    const photoAds = photo_ads.map(photo => photo.id);
+    const existsPhoto = await this.find({
       where: {
-        photo,
+        id: In(photoAds),
       },
     });
-    return photoAds;
+    return existsPhoto;
   }
 }
 export default PhotoAdsRepository;

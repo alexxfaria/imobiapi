@@ -1,3 +1,5 @@
+import PhotoAds from '../typeorm/entities/PhotoAds';
+
 export default interface IAds {
   description: string;
   type: string;
@@ -40,4 +42,5 @@ export default interface IAds {
   party_room: boolean;
   exclusive: boolean;
   active: boolean;
+  photo_ads: PhotoAds[];
 }
