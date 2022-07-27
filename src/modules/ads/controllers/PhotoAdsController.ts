@@ -5,13 +5,15 @@ import UpdatePhotoAdsService from '../services/UpdatePhotoAdsService';
 
 class PhotoAdsController {
   public async create(req: Request, res: Response): Promise<Response> {
-    const { photo, id_ads } = req.body;
+    const { photo_ads, id_people } = req.body;
+    const { id } = req.params;
 
     const createPhotoAds = new CreatePhotoAdsService();
 
     const photoAds = await createPhotoAds.execute({
-      photo,
-      id_ads,
+      photo_ads,
+      id,
+      id_people,
     });
     return res.json(photoAds);
   }

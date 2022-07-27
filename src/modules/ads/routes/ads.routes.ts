@@ -104,6 +104,7 @@ adsRouter.put(
       party_room: Joi.boolean().allow(''),
       exclusive: Joi.boolean().allow(''),
       active: Joi.boolean().allow(''),
+      photo_ads: Joi.allow(''),
     },
     [Segments.PARAMS]: { id: Joi.string().uuid().required() },
   }),

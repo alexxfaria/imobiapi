@@ -4,6 +4,7 @@ import { getCustomRepository } from 'typeorm';
 import Ads from '../typeorm/entities/Ads';
 import AdsRepository from '../typeorm/repositories/AdsRepository';
 import IAdsUpdate from '../interfaces/adsUpdate.interface';
+
 class UpdateAdsService {
   public async execute({
     id,
@@ -50,13 +51,13 @@ class UpdateAdsService {
     active,
   }: IAdsUpdate): Promise<Ads> {
     const adsRepository = getCustomRepository(AdsRepository);
-    const partnersRepository = getCustomRepository(PeopleRepositories);
+    const peoplesRepository = getCustomRepository(PeopleRepositories);
     const ads = await adsRepository.findById(id);
     if (!ads) {
       throw new AppError('Anuncio não existe');
     }
 
-    const peoples = await partnersRepository.findById(id_people);
+    const peoples = await peoplesRepository.findById(id_people);
     if (!peoples?.id) {
       throw new AppError('Parceiro não encontrado.');
     }

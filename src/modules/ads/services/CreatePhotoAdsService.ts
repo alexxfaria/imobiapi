@@ -1,31 +1,28 @@
-import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import PhotoAds from '../typeorm/entities/PhotoAds';
+import Ads from '../typeorm/entities/Ads';
 import AdsRepository from '../typeorm/repositories/AdsRepository';
-import PhotoAdsRepository from '../typeorm/repositories/PhotoAdsRepository';
+import AppError from '@shared/errors/AppError';
 
 interface IRequest {
-  photo: string;
-  id_ads: string;
+  photo_ads: PhotoAds[];
+  id_people: string;
+  id: string;
 }
 class CreatePhotoAdsService {
-  public async execute({ photo, id_ads }: IRequest): Promise<PhotoAds> {
-    const photoAdsRepository = getCustomRepository(PhotoAdsRepository);
+  public async execute({ photo_ads, id, id_people }: IRequest): Promise<Ads> {
     const adsRepository = getCustomRepository(AdsRepository);
 
-    const photoAds = photoAdsRepository.create({
-      photo,
-      id_ads,
+    const photoAds = adsRepository.create({
+      photo_ads,
+      id_people,
     });
-
-    const ads = await adsRepository.findById(id_ads);
+    const ads = await adsRepository.findById(id);
     if (!ads?.id) {
-      throw new AppError('Anúncio não encontrado.');
+      throw new AppError('Anuncio não encontrado.');
     }
-    if (!ads?.active) {
-      throw new AppError('Anúncio esta inativo.');
-    }
-    await photoAdsRepository.save(photoAds);
+
+    await adsRepository.save(photoAds);
     return photoAds;
   }
 }

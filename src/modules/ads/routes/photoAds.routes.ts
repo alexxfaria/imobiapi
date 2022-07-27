@@ -9,12 +9,13 @@ const photoAdsController = new PhotoAdsController();
 
 photoAdsRouter.use(isAuthenticated);
 photoAdsRouter.post(
-  '/',
+  '/:id',
   celebrate({
     [Segments.BODY]: {
-      photo: Joi.string().allow(''),
-      id_ads: Joi.string().uuid().allow(''),
+      photo_ads: Joi.allow(''),
+      id_people: Joi.string().uuid().required(),
     },
+    [Segments.PARAMS]: { id: Joi.string().uuid().required() },
   }),
   photoAdsController.create,
 );

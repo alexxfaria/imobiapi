@@ -4,6 +4,7 @@ import { getCustomRepository } from 'typeorm';
 import Ads from '../typeorm/entities/Ads';
 import AdsRepository from '../typeorm/repositories/AdsRepository';
 import IAds from '../interfaces/ads.interface';
+
 class CreateAdsService {
   public async execute({
     description,
