@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import CreatePhotoAdsService from '../services/CreatePhotoAdsService';
 import DeletePhotoAdsService from '../services/DeletePhotoAdsService';
-import UpdatePhotoAdsService from '../services/UpdatePhotoAdsService';
+// import UpdatePhotoAdsService from '../services/UpdatePhotoAdsService';
 
 class PhotoAdsController {
   public async create(req: Request, res: Response): Promise<Response> {
@@ -17,20 +17,20 @@ class PhotoAdsController {
     });
     return res.json(photoAds);
   }
-  public async update(req: Request, res: Response): Promise<Response> {
-    const { photo, id_ads, active } = req.body;
-    const { id } = req.params;
+  // public async update(req: Request, res: Response): Promise<Response> {
+  //   const { photo, id_ads, active } = req.body;
+  //   const { id } = req.params;
 
-    const updatePhotoAds = new UpdatePhotoAdsService();
+  //   const updatePhotoAds = new UpdatePhotoAdsService();
 
-    const photoAds = await updatePhotoAds.execute({
-      id,
-      photo,
-      id_ads,
-      active,
-    });
-    return res.json(photoAds);
-  }
+  //   const photoAds = await updatePhotoAds.execute({
+  //     id,
+  //     photo,
+  //     id_ads,
+  //     active,
+  //   });
+  //   return res.json(photoAds);
+  // }
   public async delete(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 

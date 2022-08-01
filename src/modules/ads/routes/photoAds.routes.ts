@@ -19,18 +19,18 @@ photoAdsRouter.post(
   }),
   photoAdsController.create,
 );
-photoAdsRouter.put(
-  '/:id',
-  celebrate({
-    [Segments.BODY]: {
-      photo: Joi.string().allow(''),
-      id_ads: Joi.string().uuid().allow(''),
-      active: Joi.boolean().allow(''),
-    },
-    [Segments.PARAMS]: { id: Joi.string().uuid().required() },
-  }),
-  photoAdsController.update,
-);
+// photoAdsRouter.put(
+//   '/:id',
+//   celebrate({
+//     [Segments.BODY]: {
+//       photo: Joi.string().allow(''),
+//       id_ads: Joi.string().uuid().allow(''),
+//       active: Joi.boolean().allow(''),
+//     },
+//     [Segments.PARAMS]: { id: Joi.string().uuid().required() },
+//   }),
+//   photoAdsController.update,
+// );
 photoAdsRouter.delete(
   '/:id',
   celebrate({
