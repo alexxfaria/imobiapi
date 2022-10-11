@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CreatePhotoAdsService from '../services/CreatePhotoAdsService';
 import DeletePhotoAdsService from '../services/DeletePhotoAdsService';
+import ShowPhotosAdsService from '../services/ShowPhotosAdsService';
 // import UpdatePhotoAdsService from '../services/UpdatePhotoAdsService';
 
 class PhotoAdsController {
@@ -25,6 +26,15 @@ class PhotoAdsController {
     await deletePhotoAds.execute({ id });
 
     return res.json([]);
+  }
+  public async show(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const showPhotosAds = new ShowPhotosAdsService();
+
+    const photosAds = await showPhotosAds.execute({ id });
+
+    return res.json(photosAds);
   }
 }
 export default PhotoAdsController;

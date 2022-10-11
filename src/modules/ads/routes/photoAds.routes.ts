@@ -31,6 +31,15 @@ photoAdsRouter.post(
 //   }),
 //   photoAdsController.update,
 // );
+photoAdsRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  photoAdsController.show,
+);
 photoAdsRouter.delete(
   '/:id',
   celebrate({
